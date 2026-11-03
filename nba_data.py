@@ -6,7 +6,8 @@ from nba_api.stats.endpoints import leaguegamelog
 
 
 
-SAISONS = [f"{a}-{str(a + 1)[2:]}" for a in range(2015, 2026)]
+SAISONS = [f"{a}-{str(a + 1)[2:]}" for a in range(2015, 2027)]
+SAISON_COURANTE = SAISONS[-1] 
 DOSSIER_CACHE = Path("data/raw")
 DOSSIER_CACHE.mkdir(parents=True, exist_ok=True)
 
@@ -26,7 +27,7 @@ def telecharger_saison(saison: str) -> pd.DataFrame:
     cible = DOSSIER_CACHE / f"games_{saison}.csv"
 
  
-    if cible.exists():
+    if cible.exists() and saison != SAISON_COURANTE:
         print(f"Déjà présent : {cible.name}")
         df = pd.read_csv(cible, dtype={"GAME_ID": str})
         return normaliser_types(df)

@@ -38,3 +38,17 @@ CREATE TABLE IF NOT EXISTS game_log (
     CONSTRAINT fk_log_equipe FOREIGN KEY (team_id) REFERENCES equipe(team_id),
     CONSTRAINT chk_wl CHECK (wl IN ('W', 'L'))
 ) ENGINE=InnoDB;
+-- Prévisions quotidiennes de la simulation (aussi créée par previsions.py)
+CREATE TABLE IF NOT EXISTS prevision (
+    jour                DATE          NOT NULL,
+    equipe              CHAR(3)       NOT NULL,
+    conference          VARCHAR(5)    NOT NULL,
+    victoires_actuelles INT           NOT NULL,
+    victoires_attendues DECIMAL(5, 2) NOT NULL,
+    p_top6              DECIMAL(5, 4) NOT NULL,
+    p_playin            DECIMAL(5, 4) NOT NULL,
+    p_top10             DECIMAL(5, 4) NOT NULL,
+    p_seed1             DECIMAL(5, 4) NOT NULL,
+    PRIMARY KEY (jour, equipe),
+    CONSTRAINT chk_conference CHECK (conference IN ('Est', 'Ouest'))
+) ENGINE=InnoDB;

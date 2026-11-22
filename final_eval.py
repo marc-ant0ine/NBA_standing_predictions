@@ -49,3 +49,5 @@ se = d.std() / np.sqrt(len(d))
 print(f"\n[final vs sans B2B]  n = {len(d)}")
 print(f"  gain {d.mean():+.4f} | erreur-type {se:.4f} | z = {d.mean() / se:+.2f}")
 print(f"  IC95 : [{d.mean() - 1.96 * se:+.4f}, {d.mean() + 1.96 * se:+.4f}]")
+
+

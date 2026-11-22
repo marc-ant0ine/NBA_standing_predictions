@@ -19,6 +19,10 @@ def charger_equipes(conn, df):
 
 def charger_game_log(conn, df):
     """Charge les lignes de stats dans game_log (idempotent)."""
+    # Un match en cours a WL vide : on ne charge que les matchs terminés (les deux lignes de chaque match)
+    df = df[df["WL"].notna()]
+    df = df.groupby("GAME_ID").filter(lambda g: len(g) == 2)
+
     df = df.rename(columns={"MIN": "minutes_total"})
 
     colonnes = [

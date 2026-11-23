@@ -68,8 +68,10 @@ def charger_previsions():
 
 @st.cache_data
 def charger_backtest():
-    chemin = Path("data/processed/backtest.csv")
-    return pd.read_csv(chemin) if chemin.exists() else None
+    for chemin in [Path("data/processed/backtest.csv"), Path("results/backtest.csv")]:
+        if chemin.exists():
+            return pd.read_csv(chemin)
+    return None
 
 
 with st.sidebar:
@@ -147,7 +149,7 @@ with onglet_evolution:
 with onglet_fiabilite:
     bt = charger_backtest()
     if bt is None:
-        st.warning("Fichier data/processed/backtest.csv introuvable : lance backtest.py.")
+        st.warning("Aucun fichier de backtest trouvé (data/processed/backtest.csv ou results/backtest.csv) : lance backtest.py.")
     else:
         lignes = []
         for f, g in bt.groupby("fraction"):

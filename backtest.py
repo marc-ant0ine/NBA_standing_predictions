@@ -8,8 +8,8 @@ from variables import construire_variables
 import simulation as S
 
 N_SIMS = 2_000
-SAISONS_BACKTEST = ["22023", "22024", "22025"]      # 2023-24 a servi à régler l'Elo (résultat un peu optimiste) ; 2024-25 et 2025-26 sont les saisons de test
-FRACTIONS = [0.10, 0.25, 0.50, 0.75, 0.90]          # part de la saison déjà jouée à la date de coupure
+SAISONS_BACKTEST = ["22023", "22024", "22025"]     
+FRACTIONS = [0.10, 0.25, 0.50, 0.75, 0.90]          
 
 
 def entrainer_jusqua(matchs_f, saison):

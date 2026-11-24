@@ -12,7 +12,7 @@ _EQUIPES = nba_teams.get_teams()
 ID_EQUIPE = {t["abbreviation"]: t["id"] for t in _EQUIPES}
 NOM_EQUIPE = {t["abbreviation"]: t["full_name"] for t in _EQUIPES}
 
-# Couleurs principales (approximatives, à ajuster à ton goût)
+# Couleurs principales
 COULEURS = {
     "ATL": "#C8102E", "BOS": "#007A33", "BKN": "#000000", "CHA": "#00788C", "CHI": "#CE1141",
     "CLE": "#860038", "DAL": "#00538C", "DEN": "#0E2240", "DET": "#C8102E", "GSW": "#1D428A",

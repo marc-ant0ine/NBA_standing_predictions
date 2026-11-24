@@ -7,7 +7,7 @@ frames = sched.get_data_frames()
 df = frames[0]
 
 Path("data/raw").mkdir(parents=True, exist_ok=True)
-df.to_csv("data/raw/calendrier_2026-27.csv", index=False)      # copie locale : pas besoin de ré-appeler l'API
+df.to_csv("data/raw/calendrier_2026-27.csv", index=False)     
 
 print("forme :", df.shape)
 mots = ["teamid", "tricode", "teamname", "arena", "city"]
